@@ -12,8 +12,22 @@ struct MissionDetailView: View {
     let mission: Mission
     
     var body: some View {
-        Text("Hello, World!")
+        ScrollView {
+            VStack {
+                Image(mission.imageName)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 300, height: 300)
+                Text(mission.formattedLaunchDate)
+                    .padding()
+                Text(mission.description)
+                
+            }
+        }
+        .padding()
+        .navigationTitle(               Text(mission.displayName))
     }
+    
 }
 
 struct MissionDetailView_Previews: PreviewProvider {
