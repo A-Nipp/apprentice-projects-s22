@@ -28,7 +28,8 @@ struct ContentView: View {
                         VStack(alignment: .leading) {
                             Text(checkIn.mood)
                             Text(checkIn.formattedTimestamp)
-                                .fontWeight(.light)
+                                .font(.system(size: 12))
+                                .foregroundColor(.secondary)
                         }
                         
                     }
