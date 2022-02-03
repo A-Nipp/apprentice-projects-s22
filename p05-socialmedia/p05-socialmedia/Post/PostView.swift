@@ -11,7 +11,39 @@ struct PostView: View {
     let post: Post
 
     var body: some View {
-        Text("Hello, World!")
+        VStack(alignment: .leading) {
+            HStack {
+                Image(post.authorImageAddress)
+                    .resizable()
+                    .clipShape(Circle())
+                    .frame(width: 40.0, height: 40.0)
+                    .clipShape(Circle())
+                VStack(alignment: .leading) {
+                    Text(post.authorName)
+                        .fontWeight(.bold)
+                    Text("@" + post.authorUsername)
+                        .foregroundColor(.gray)
+                }
+                
+            }
+            Text(post.postContent)
+            Text(post.formattedDate)
+                .foregroundColor(.gray)
+                .fontWeight(.light)
+            HStack {
+                Button {} label: {
+                    Image(systemName: "bubble.left")
+                }
+                Button {} label: {
+                    Image(systemName: "arrow.rectanglepath")
+                }
+                Button {} label: {
+                    Image(systemName: "heart")
+                }
+                
+            }
+        }
+        .padding()
     }
 }
 
