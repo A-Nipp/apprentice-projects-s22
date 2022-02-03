@@ -9,39 +9,45 @@ import SwiftUI
 
 struct PostView: View {
     let post: Post
-
+    
     var body: some View {
-        VStack(alignment: .leading) {
-            HStack {
+        HStack(alignment: .top) {
+            VStack {
                 Image(post.authorImageAddress)
                     .resizable()
                     .clipShape(Circle())
                     .frame(width: 40.0, height: 40.0)
                     .clipShape(Circle())
-                VStack(alignment: .leading) {
-                    Text(post.authorName)
-                        .fontWeight(.bold)
-                    Text("@" + post.authorUsername)
-                        .foregroundColor(.gray)
-                }
-                
+                //                Spacer()
             }
-            Text(post.postContent)
-            Text(post.formattedDate)
-                .foregroundColor(.gray)
-                .fontWeight(.light)
-            HStack {
-                Button {} label: {
-                    Image(systemName: "bubble.left")
+            VStack(alignment: .leading) {
+                HStack {
+                    VStack(alignment: .leading) {
+                        Text(post.authorName)
+                            .fontWeight(.bold)
+                        Text("@" + post.authorUsername)
+                            .foregroundColor(.gray)
+                    }
+                    
                 }
-                Button {} label: {
-                    Image(systemName: "arrow.rectanglepath")
+                Text(post.postContent)
+                Text(post.formattedDate)
+                    .foregroundColor(.gray)
+                    .fontWeight(.light)
+                HStack {
+                    Button {} label: {
+                        Image(systemName: "bubble.left")
+                    }
+                    Button {} label: {
+                        Image(systemName: "arrow.rectanglepath")
+                    }
+                    Button {} label: {
+                        Image(systemName: "heart")
+                    }
+                    
                 }
-                Button {} label: {
-                    Image(systemName: "heart")
-                }
-                
             }
+            //            .padding()
         }
         .padding()
     }
