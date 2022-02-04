@@ -16,54 +16,56 @@ struct PostView: View {
     @State private var heartIcon = "heart"
     @State private var heartIconColor = Color(UIColor.systemBlue)
     var body: some View {
-        HStack(alignment: .top) {
-            VStack {
-                Image(post.authorImageAddress)
-                    .resizable()
-                    .clipShape(Circle())
-                    .frame(width: 40.0, height: 40.0)
-                    .clipShape(Circle())
-                //                Spacer()
-            }
-            VStack(alignment: .leading, spacing: vertSpace) {
-                HStack {
-                    Text(post.authorName)
-                        .fontWeight(.bold)
-                    Text("@" + post.authorUsername)
-                        .foregroundColor(.gray)
+        VStack(alignment: .leading) {
+            HStack(alignment: .top) {
+                VStack {
+                    Image(post.authorImageAddress)
+                        .resizable()
+                        .clipShape(Circle())
+                        .frame(width: 40.0, height: 40.0)
+                        .clipShape(Circle())
+                    //                Spacer()
                 }
-                
-                
-                Text(post.postContent)
-                    .font(.system(size: bodyFontSize))
-                Text(post.formattedDate)
-                    .foregroundColor(.gray)
-                    .fontWeight(.light)
-                HStack {
-                    Button {} label: {
-                        Image(systemName: "bubble.left")
+                VStack(alignment: .leading, spacing: vertSpace) {
+                    HStack {
+                        Text(post.authorName)
+                            .fontWeight(.bold)
+                        Text("@" + post.authorUsername)
+                            .foregroundColor(.gray)
                     }
-                    Text("\(post.commentCount)")
-//                    Button {} label: {
-//                        Image(systemName: "arrow.rectanglepath")
-//                    }
-                    Button {
-                        withAnimation {
-                            toggleLiked()
-                        }
-                    } label: {
-                        Image(systemName: heartIcon)
-                            .foregroundColor(heartIconColor)
-                    }
-                    Text("\(post.likeCount)")
-                        .foregroundColor(likeColor)
                     
+                    
+                    Text(post.postContent)
+                        .font(.system(size: bodyFontSize))
+                    Text(post.formattedDate)
+                        .foregroundColor(.gray)
+                        .fontWeight(.light)
+                    HStack {
+                        Button {} label: {
+                            Image(systemName: "bubble.left")
+                        }
+                        Text("\(post.commentCount)")
+                        //                    Button {} label: {
+                        //                        Image(systemName: "arrow.rectanglepath")
+                        //                    }
+                        Button {
+                            withAnimation {
+                                toggleLiked()
+                            }
+                        } label: {
+                            Image(systemName: heartIcon)
+                                .foregroundColor(heartIconColor)
+                        }
+                        Text("\(post.likeCount)")
+                            .foregroundColor(likeColor)
+                        
+                    }
                 }
+                //            .padding()
             }
-            //            .padding()
+            .padding(5)
         }
-        .padding(5)
-        
+//        .border(Color.green)
     }
     
     func toggleLiked() {
