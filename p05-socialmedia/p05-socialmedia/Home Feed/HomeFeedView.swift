@@ -28,7 +28,7 @@ struct HomeFeedView: View {
                     Spacer()
                     HStack {
                         Spacer()
-                        Button {} label: {
+                        NavigationLink(destination: NewPostView()) {
                             Text("+")
                                 .font(.system(size:30))
                                 .frame(width:50, height:50)
