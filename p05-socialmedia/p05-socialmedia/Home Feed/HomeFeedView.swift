@@ -29,12 +29,15 @@ struct HomeFeedView: View {
                     HStack {
                         Spacer()
                         NavigationLink(destination: NewPostView()) {
-                            Text("+")
-                                .font(.system(size:30))
-                                .frame(width:50, height:50)
-                                .foregroundColor(Color.white)
-                                .background(Color.blue)
-                                .clipShape(Circle())
+                            ZStack {
+                                Color.blue
+                                    .clipShape(Circle())
+                                    .frame(width:50, height:50)
+                                Image(systemName: "plus")
+                                    .resizable()
+                                    .foregroundColor(Color.white)
+                                    .frame(width:20, height:20)
+                            }
                         }
                         .padding(15)
                     }
