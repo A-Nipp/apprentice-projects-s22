@@ -17,7 +17,7 @@ struct SignUpView: View {
                 .font(.title3)
                 .fontWeight(.bold)
                 .padding(.bottom)
-            
+
             TextField("Username", text: $userName)
             Divider()
             TextField("Password", text: $password)
@@ -27,12 +27,10 @@ struct SignUpView: View {
             Button {
                 
             } label: {
-                Text("Create Account")
+                Text("Login")
             }
             .padding(.top)
             .buttonStyle(.bordered)
-            Spacer()
-            Spacer()
             Spacer()
         }
         .padding()
