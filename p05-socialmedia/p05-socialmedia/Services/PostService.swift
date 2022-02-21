@@ -8,7 +8,7 @@
 import Foundation
 
 struct PostService {
-    private static var posts: [Post] = []
+    private static var posts: [Post] = PostList.defaultPosts
     
     static func getHomeFeed() -> [Post] {
         return posts

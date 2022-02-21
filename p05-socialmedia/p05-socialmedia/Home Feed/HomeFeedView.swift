@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct HomeFeedView: View {
-    let posts: [Post] = PostList.defaultPosts
+    @StateObject var vm = HomeFeedViewModel()
     
     var body: some View {
         NavigationView {
             ZStack {
                 ScrollView {
                     VStack(alignment:.leading) {
-                        ForEach(posts, id: \.id) { post in
+                        ForEach(vm.posts, id: \.id) { post in
                             PostView(post: post)
                                 .padding()
                             Divider()
@@ -28,7 +28,9 @@ struct HomeFeedView: View {
                     Spacer()
                     HStack {
                         Spacer()
-                        NavigationLink(destination: NewPostView()) {
+                        Button {
+                            vm.showingSheet.toggle()
+                        } label: {
                             ZStack {
                                 Color.blue
                                     .clipShape(Circle())
@@ -44,6 +46,10 @@ struct HomeFeedView: View {
                 }
             }
         }
+        .onAppear(perform: {vm.fetchPosts()})
+        .sheet(isPresented: $vm.showingSheet) {
+            NewPostView(vm: NewPostViewModel())
+                }
     }
 }
 
