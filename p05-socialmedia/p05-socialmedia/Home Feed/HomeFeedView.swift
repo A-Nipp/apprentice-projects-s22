@@ -48,7 +48,7 @@ struct HomeFeedView: View {
         }
         .onAppear(perform: {vm.fetchPosts()})
         .sheet(isPresented: $vm.showingSheet) {
-            NewPostView(vm: NewPostViewModel())
+            NewPostView(vm: NewPostViewModel(), homeViewModel: vm)
                 }
     }
 }

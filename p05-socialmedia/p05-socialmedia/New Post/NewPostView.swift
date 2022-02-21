@@ -10,6 +10,7 @@ import SwiftUI
 struct NewPostView: View {
     @Environment(\.dismiss) var dismiss
     @StateObject var vm: NewPostViewModel
+    @ObservedObject var homeViewModel: HomeFeedViewModel
     var body: some View {
         VStack {
             HStack {
@@ -19,6 +20,7 @@ struct NewPostView: View {
                 Spacer()
                 Button("Post") {
                     vm.makePost()
+                    homeViewModel.fetchPosts()
                     dismiss()
                 }
             }
@@ -38,6 +40,6 @@ struct NewPostView: View {
 
 struct NewPostView_Previews: PreviewProvider {
     static var previews: some View {
-        NewPostView(vm: NewPostViewModel())
+        NewPostView(vm: NewPostViewModel(), homeViewModel:  HomeFeedViewModel())
     }
 }
